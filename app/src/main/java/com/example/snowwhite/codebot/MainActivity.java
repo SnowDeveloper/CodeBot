@@ -12,13 +12,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("Main Page","Here");
+        Log.d("Main Page", "Here");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
     public void startLearning(View view) {
-        Log.d("StudyInfo Page","Here");
+        Log.d("StudyInfo Page", "Here");
 
         Intent intent = new Intent(this, StudyInfo.class);
         //startActivityForResult(intent, 1);
