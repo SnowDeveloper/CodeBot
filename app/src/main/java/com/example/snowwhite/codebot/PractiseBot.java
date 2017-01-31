@@ -3,6 +3,9 @@ package com.example.snowwhite.codebot;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -19,6 +22,8 @@ public class PractiseBot extends FragmentActivity {
     private final Random random = new Random();
     private final String WIT_TOKEN = "EIYRHFKXVNNJHIV2GR4WDLW3FOAGJTRL";
 
+    private EditText editText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +31,7 @@ public class PractiseBot extends FragmentActivity {
 
         AndroidNetworking.initialize(getApplicationContext());
 
-        chatToWit("hello");
+        editText = (EditText) findViewById(R.id.userInput);
     }
 
     private void chatToWit(String input) {
@@ -42,9 +47,9 @@ public class PractiseBot extends FragmentActivity {
                         // do anything with response
                         try {
                             Log.d(TAG, "onResponse message: " + response.getString("msg"));
-                            if (response.getString("msg").equals("Hello")) {
-                                chatToWit("info");
-                            }
+//                            if (response.getString("msg").equals("Hello")) {
+//                                chatToWit("info");
+//                            }
                         } catch (JSONException e) {
                             Log.d(TAG, String.format("onResponse: %s", response));
                             Log.e(TAG, "onResponse: ", e);
@@ -57,5 +62,10 @@ public class PractiseBot extends FragmentActivity {
                         Log.d(TAG, String.format("onError: %s", error));
                     }
                 });
+    }
+
+    public void sendUserInput(View view) {
+        chatToWit(editText.getText().toString());
+        Log.d(TAG, String.format("sendUserInput: %s", editText.getText().toString()));
     }
 }
