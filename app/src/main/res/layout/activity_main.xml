@@ -30,7 +30,6 @@
         android:text="CODING BUDDY"
         tools:textColor="@android:color/white" />
 
-
     <Button
         android:id="@+id/startBtn"
         android:layout_width="120dp"
@@ -38,7 +37,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="102dp"
-        android:text="Start" />
+        android:text="Start"
+        android:onClick="startLearning" />
 
     <ImageView
         android:id="@+id/imageView"
