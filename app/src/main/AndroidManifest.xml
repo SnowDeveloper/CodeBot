@@ -19,6 +19,9 @@
         <activity
             android:name=".StudyInfo"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+        <activity
+            android:name=".PractiseBot"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
 
     </application>
 

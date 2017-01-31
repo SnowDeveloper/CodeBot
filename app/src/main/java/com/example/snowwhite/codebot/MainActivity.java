@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d("StudyInfo Page", "Here");
 
         Intent intent = new Intent(this, StudyInfo.class);
-        //startActivityForResult(intent, 1);
         startActivity(intent);
     }
 
