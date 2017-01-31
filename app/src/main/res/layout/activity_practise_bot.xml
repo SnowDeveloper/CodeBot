@@ -60,10 +60,7 @@
                     android:layout_weight="6"
                     android:background="@drawable/rounded_corner"
                     android:padding="16dp"
-                    android:text="Android charting application xml ui design tutorial with example.
-                    Android charting application xml ui design tutorial with example. Android
-                     charting application xml ui design tutorial with example. Android charting
-                     application xml ui design tutorial with example."
+                    android:text="What would you like to learn?"
                     android:textColor="#000" />
 
                 <ImageView
@@ -118,9 +115,7 @@
                     android:layout_weight="6"
                     android:background="@drawable/rounded_corner1"
                     android:padding="16dp"
-                    android:text="Android charting application xml ui design. Android
-                    charting application xml ui design tutorial with example. Android
-                    charting application xml ui design. Android charting application xml ui design. "
+                    android:text="Python"
                     android:textColor="#000" />
 
             </LinearLayout>
@@ -141,10 +136,8 @@
                     android:layout_weight="6"
                     android:background="@drawable/rounded_corner"
                     android:padding="16dp"
-                    android:text="Android charting application xml ui design tutorial with
-                    example. Android charting application xml ui design tutorial with example.
-                    Android charting application xml ui design tutorial with example. Android
-                    charting application xml ui design tutorial with example."
+                    android:text="Sure lets begin with question1: What will be the output of ->
+                    print('Hello')"
                     android:textColor="#000" />
 
                 <ImageView
@@ -199,9 +192,7 @@
                     android:layout_weight="6"
                     android:background="@drawable/rounded_corner1"
                     android:padding="16dp"
-                    android:text="Android charting application xml ui design. Android charting
-                    application xml ui design tutorial with example. Android charting application
-                     xml ui design. Android charting application xml ui design. "
+                    android:text="Hello"
                     android:textColor="#000" />
             </LinearLayout>
         </RelativeLayout>
