@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_image"
-    android:theme="@android:style/Theme.NoTitleBar"
+    android:theme="@style/Theme.AppCompat.Light"
     tools:context="com.example.snowwhite.codebot.MainActivity">
 
     <TextView
@@ -18,7 +18,7 @@
         android:layout_marginTop="19dp"
         android:text="{ CODY }"
         android:textSize="30sp"
-        tools:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/textView2"
@@ -28,7 +28,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="33dp"
         android:text="CODING BUDDY"
-        tools:textColor="@android:color/white" />
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/startBtn"
