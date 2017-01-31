@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_image"
-    android:theme="@style/Theme.AppCompat.Light"
     tools:context="com.example.snowwhite.codebot.MainActivity">
 
     <TextView
@@ -37,20 +36,20 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="102dp"
-        android:text="Start"
-        android:onClick="startLearning" />
+        android:onClick="startLearning"
+        android:text="Start" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="30px"
-        android:paddingRight="30px"
-        app:srcCompat="@drawable/code_img"
-        android:layout_alignTop="@+id/textView1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp" />
+        android:layout_alignTop="@+id/textView1"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="30px"
+        android:paddingRight="30px"
+        app:srcCompat="@drawable/code_img" />
 
 
 </RelativeLayout>
