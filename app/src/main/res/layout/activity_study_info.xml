@@ -25,6 +25,16 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
-        android:text="Practise"
-        android:onClick="startPractiseBot" />
+        android:onClick="startPractiseBot"
+        android:text="Practise" />
+
+    <TextView
+        android:id="@+id/studyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/practiseBtn"
+        android:layout_alignStart="@+id/practiseBtn"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="18dp"
+        android:textColor="#FFFFFF" />
 </RelativeLayout>
