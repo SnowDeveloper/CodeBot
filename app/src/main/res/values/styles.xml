@@ -1,0 +1,7 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="code_bot" parent="Theme.AppCompat.Light.NoActionBar">
+    </style>
+
+</resources>
