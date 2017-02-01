@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startLearning(View view) {
+        //Leading to the Tutorial page
         Log.d("StudyInfo Page", "Here");
 
         Intent intent = new Intent(this, StudyInfo.class);
