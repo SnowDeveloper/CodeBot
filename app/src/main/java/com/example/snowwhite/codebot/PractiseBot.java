@@ -3,11 +3,12 @@ package com.example.snowwhite.codebot;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
@@ -43,19 +44,29 @@ public class PractiseBot extends FragmentActivity {
             @Override
             public void onClick(View v) {
                 // Perform action on click
+                displayOwnMessage(editText.getText().toString());
                 chatToWit(editText.getText().toString());
                 Log.d(TAG, String.format("sendUserInput: %s", editText.getText().toString()));
             }
         });
-
     }
 
     private void displayBotMessage(String message) {
-        TextView textView = new TextView(this);
-        textView.setText(message);
-        textView.setPadding(16, 26, 16, 16);
-        textView.setBackground(getResources().getDrawable(R.drawable.rounded_corner));
-        messageHolder.addView(textView);
+        LayoutInflater inflater = LayoutInflater.from(this);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.chat_message, messageHolder, false);
+
+        TextView child = (TextView) layout.getChildAt(0);
+        child.setText(message);
+        messageHolder.addView(layout);
+    }
+
+    private void displayOwnMessage(String message) {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.own_chat_message, messageHolder, false);
+
+        TextView child = (TextView) layout.getChildAt(2);
+        child.setText(message);
+        messageHolder.addView(layout);
     }
 
     private void chatToWit(String input) {
