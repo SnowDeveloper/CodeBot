@@ -18,7 +18,7 @@ public class StudyInfo extends FragmentActivity {
         TextView textViewHeading = (TextView) findViewById(R.id.txtViewHeading);
         TextView textViewStudy = (TextView) findViewById(R.id.studyTextView);
 
-        int tutCount = 9;
+        int tutCount = 0;
         if (tutCount == 0) {
             String heading = "1.0 - What is Coding?";
             textViewHeading.setText(heading);

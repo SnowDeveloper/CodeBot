@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
@@ -25,6 +27,7 @@ public class PractiseBot extends FragmentActivity {
 
     private EditText editText;
     private ViewGroup messageHolder;
+    private ImageView myMsgBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,16 @@ public class PractiseBot extends FragmentActivity {
 
         editText = (EditText) findViewById(R.id.userInput);
         messageHolder = (ViewGroup) findViewById(R.id.message_holder);
+        myMsgBtn = (ImageView) findViewById(R.id.sendUserInput);
+        myMsgBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Perform action on click
+                chatToWit(editText.getText().toString());
+                Log.d(TAG, String.format("sendUserInput: %s", editText.getText().toString()));
+            }
+        });
+
     }
 
     private void displayBotMessage(String message) {
@@ -73,7 +86,7 @@ public class PractiseBot extends FragmentActivity {
                 });
     }
 
-    public void sendUserInput(View view) {
+    public void sendUserInp(View view) {
         chatToWit(editText.getText().toString());
         Log.d(TAG, String.format("sendUserInput: %s", editText.getText().toString()));
     }
