@@ -79,7 +79,7 @@
                     android:layout_height="40dp"
                     android:layout_marginTop="0dp"
                     android:layout_weight="3"
-                    android:src="@drawable/user_pacific" />
+                    android:src="@drawable/code_bot" />
 
             </LinearLayout>
 
@@ -97,7 +97,7 @@
                     android:layout_height="40dp"
                     android:layout_marginTop="0dp"
                     android:layout_weight="3"
-                    android:src="@drawable/user_pratikshya" />
+                    android:src="@drawable/user" />
 
                 <ImageView
                     android:id="@+id/imageView1"
@@ -156,7 +156,7 @@
                     android:layout_height="40dp"
                     android:layout_marginTop="0dp"
                     android:layout_weight="3"
-                    android:src="@drawable/user_pacific" />
+                    android:src="@drawable/code_bot" />
 
             </LinearLayout>
 
@@ -174,7 +174,7 @@
                     android:layout_height="40dp"
                     android:layout_marginTop="0dp"
                     android:layout_weight="3"
-                    android:src="@drawable/user_pratikshya" />
+                    android:src="@drawable/user" />
 
                 <ImageView
                     android:id="@+id/imageView7"
