@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ public class PractiseBot extends FragmentActivity {
     private final String WIT_TOKEN = "EIYRHFKXVNNJHIV2GR4WDLW3FOAGJTRL";
 
     private EditText editText;
+    private ViewGroup messageHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,15 @@ public class PractiseBot extends FragmentActivity {
         AndroidNetworking.initialize(getApplicationContext());
 
         editText = (EditText) findViewById(R.id.userInput);
+        messageHolder = (ViewGroup) findViewById(R.id.message_holder);
+    }
+
+    private void displayBotMessage(String message) {
+        TextView textView = new TextView(this);
+        textView.setText(message);
+        textView.setPadding(16, 26, 16, 16);
+        textView.setBackground(getResources().getDrawable(R.drawable.rounded_corner));
+        messageHolder.addView(textView);
     }
 
     private void chatToWit(String input) {
@@ -47,9 +58,7 @@ public class PractiseBot extends FragmentActivity {
                         // do anything with response
                         try {
                             Log.d(TAG, "onResponse message: " + response.getString("msg"));
-//                            if (response.getString("msg").equals("Hello")) {
-//                                chatToWit("info");
-//                            }
+                            displayBotMessage(response.getString("msg"));
                         } catch (JSONException e) {
                             Log.d(TAG, String.format("onResponse: %s", response));
                             Log.e(TAG, "onResponse: ", e);
