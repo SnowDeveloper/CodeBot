@@ -59,8 +59,10 @@ public class PractiseBot extends FragmentActivity {
     }
 
     private void chatToWit(String input) {
-        String session_id = Long.toHexString(random.nextLong()) + Long.toHexString(random.nextLong()) + Long.toHexString(random.nextLong());
-        AndroidNetworking.post(String.format("https://api.wit.ai/converse?q=%s&session_id=%s", input, session_id))
+        String session_id = Long.toHexString(random.nextLong()) + Long.toHexString(random.nextLong())
+                + Long.toHexString(random.nextLong());
+        AndroidNetworking.post(String.format("https://api.wit.ai/converse?q=%s&session_id=%s",
+                input, session_id))
 
                 .addHeaders("Authorization", "Bearer " + WIT_TOKEN)
                 .setPriority(Priority.MEDIUM)
@@ -86,8 +88,4 @@ public class PractiseBot extends FragmentActivity {
                 });
     }
 
-    public void sendUserInp(View view) {
-        chatToWit(editText.getText().toString());
-        Log.d(TAG, String.format("sendUserInput: %s", editText.getText().toString()));
-    }
 }
