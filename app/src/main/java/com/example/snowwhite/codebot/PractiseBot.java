@@ -53,18 +53,18 @@ public class PractiseBot extends FragmentActivity {
 
     private void displayBotMessage(String message) {
         LayoutInflater inflater = LayoutInflater.from(this);
-        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.chat_message, messageHolder, false);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.bot_responses, messageHolder, false);
 
-        TextView child = (TextView) layout.getChildAt(0);
+        TextView child = (TextView) layout.getChildAt(2);
         child.setText(message);
         messageHolder.addView(layout);
     }
 
     private void displayOwnMessage(String message) {
         LayoutInflater inflater = LayoutInflater.from(this);
-        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.own_chat_message, messageHolder, false);
+        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.user_responses, messageHolder, false);
 
-        TextView child = (TextView) layout.getChildAt(2);
+        TextView child = (TextView) layout.getChildAt(0);
         child.setText(message);
         messageHolder.addView(layout);
     }

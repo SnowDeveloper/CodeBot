@@ -6,16 +6,15 @@
     <ImageView
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="0dp"
-        android:layout_weight="3"
+        android:layout_marginTop="5dp"
+        android:layout_weight="0.16"
         android:src="@drawable/user" />
 
     <ImageView
-        android:layout_width="30dp"
+        android:layout_width="24dp"
         android:layout_height="30dp"
         android:layout_marginRight="-15dp"
         android:layout_marginTop="6.5dp"
-        android:layout_weight="1"
         android:src="@drawable/arrow_bg2" />
 
     <TextView
