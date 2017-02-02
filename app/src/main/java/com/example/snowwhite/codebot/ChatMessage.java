@@ -1,39 +1,42 @@
 package com.example.snowwhite.codebot;
 
-/**
- * Created by himanshusoni on 06/09/15.
- */
 public class ChatMessage {
-    private boolean isImage, isMine;
+    private boolean isMine;
     private String content;
+    private MessageType messageType;
+    private String[] options;
 
-    public ChatMessage(String message, boolean mine, boolean image) {
+    public ChatMessage(String message, boolean mine, MessageType messageType) {
         content = message;
         isMine = mine;
-        isImage = image;
+        this.messageType = messageType;
     }
 
     public String getContent() {
         return content;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     public boolean isMine() {
         return isMine;
     }
 
-    public void setIsMine(boolean isMine) {
-        this.isMine = isMine;
-    }
-
     public boolean isImage() {
-        return isImage;
+        return messageType == MessageType.IMAGE;
     }
 
-    public void setIsImage(boolean isImage) {
-        this.isImage = isImage;
+    public boolean isMultipleChoice() {
+        return messageType == MessageType.CHOICE;
+    }
+
+    public void setOptions(String[] options) {
+        this.options = options;
+    }
+
+    public String[] getOptions() {
+        return options;
+    }
+
+    public enum MessageType {
+        NORMAL, IMAGE, CHOICE
     }
 }

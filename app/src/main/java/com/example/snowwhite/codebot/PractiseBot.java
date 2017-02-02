@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -25,7 +26,8 @@ import java.util.Random;
 public class PractiseBot extends FragmentActivity {
     public static final String TAG = "CodeBot";
     private final Random random = new Random();
-    private final String WIT_TOKEN = "EIYRHFKXVNNJHIV2GR4WDLW3FOAGJTRL";
+    // EIYRHFKXVNNJHIV2GR4WDLW3FOAGJTRL
+    private final String WIT_TOKEN = "MQB36LQOLR4DMQ5DYPHFSQNPH2FXQHOI";
 
     private RecyclerView mRecyclerView;
     private Button mButtonSend;
@@ -66,13 +68,20 @@ public class PractiseBot extends FragmentActivity {
         mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendMessage("info");
+                sendMessage("python");
             }
         });
     }
 
-    private void displayMessage(String message, boolean ownMessage) {
-        ChatMessage chatMessage = new ChatMessage(message, ownMessage, false);
+    private void displayMessage(String message, boolean ownMessage, ChatMessage.MessageType type) {
+        ChatMessage chatMessage = new ChatMessage(message, ownMessage, type);
+        mAdapter.add(chatMessage);
+        mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
+    }
+
+    private void setupChoice(String message, String... options) {
+        ChatMessage chatMessage = new ChatMessage(message, false, ChatMessage.MessageType.CHOICE);
+        chatMessage.setOptions(options);
         mAdapter.add(chatMessage);
         mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
     }
@@ -80,8 +89,8 @@ public class PractiseBot extends FragmentActivity {
     private void chatToWit(String input) {
         String session_id = Long.toHexString(random.nextLong()) + Long.toHexString(random.nextLong())
                 + Long.toHexString(random.nextLong());
-        AndroidNetworking.post(String.format("https://api.wit.ai/converse?q=%s&session_id=%s",
-                input, session_id))
+
+        AndroidNetworking.post(String.format("https://api.wit.ai/converse?q=%s&session_id=%s", input, session_id))
 
                 .addHeaders("Authorization", "Bearer " + WIT_TOKEN)
                 .setPriority(Priority.MEDIUM)
@@ -92,31 +101,31 @@ public class PractiseBot extends FragmentActivity {
                         // do anything with response
                         try {
                             Log.d(TAG, "onResponse message: " + response.getString("msg"));
-                            displayMessage(response.getString("msg"), false);
+                            displayMessage(response.getString("msg"), false, ChatMessage.MessageType.NORMAL);
                         } catch (JSONException e) {
                             Log.d(TAG, String.format("onResponse: %s", response));
                             Log.e(TAG, "onResponse: ", e);
+                            setupChoice("What you want?", "python", "java");
                         }
                     }
 
                     @Override
                     public void onError(ANError error) {
                         // handle error
-                        Log.d(TAG, String.format("onError: %s", error));
+                        Log.e(TAG, "onError", error);
                     }
                 });
     }
 
     private void sendMessage(String message) {
         chatToWit(message);
-        displayMessage(message, true);
+        displayMessage(message, true, ChatMessage.MessageType.NORMAL);
     }
 
-    private void sendMessage() {
-        ChatMessage chatMessage = new ChatMessage(null, true, true);
-        mAdapter.add(chatMessage);
-
-//        mimicOtherMessage();
+    public void onItemClicked(View view, LinearLayout options) {
+        Log.d(TAG, String.format("onItemClicked: %s", ((Button) (view)).getText()));
+        sendMessage(((Button) view).getText().toString());
+        options.removeAllViews();
     }
 
 }
