@@ -9,8 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class StudyInfo extends FragmentActivity {
-
-    String val;
+    public static final String TAG = "CodeBot";
     private int tutCount;
 
     @Override
@@ -22,7 +21,7 @@ public class StudyInfo extends FragmentActivity {
         TextView textViewStudy = (TextView) findViewById(R.id.studyTextView);
 
         Intent intent = getIntent();
-        tutCount = intent.getExtras().getInt("tutorial_next");
+        tutCount = intent.getExtras().getInt(getString(R.string.intent_next_tutorial_id));
 
         //Based on the count, the specific tutorial gets loaded in the screen
         if (tutCount == 0) {
@@ -37,7 +36,7 @@ public class StudyInfo extends FragmentActivity {
                     "written in a computer language and computer is the reader of this code. ";
             textViewStudy.setText(tut_1_0);
             tutCount = tutCount + 1;
-            Log.d("Tutorial Count: ","value: " + tutCount);
+            Log.d(TAG,"value: " + tutCount);
         }
         else if (tutCount == 1) {
             String heading = "1.1 - Why programming?";
@@ -47,7 +46,7 @@ public class StudyInfo extends FragmentActivity {
                     "\n\ntechnology. ";
             textViewStudy.setText(tut_1_1);
             tutCount = tutCount + 1;
-            Log.d("Tutorial Count: ","value: " + tutCount);
+            Log.d(TAG,"value: " + tutCount);
         }
         else if (tutCount == 2) {
             String heading = "1.2 - Why Python?";
@@ -57,7 +56,7 @@ public class StudyInfo extends FragmentActivity {
                     "\n\nBut we will discuss interpretation in the next chapter. ";
             textViewStudy.setText(tut_1_2);
             tutCount = tutCount + 1;
-            Log.d("Tutorial Count: ","value: " + tutCount);
+            Log.d(TAG,"value: " + tutCount);
         }
         else if (tutCount == 3) {
             String heading = "1.3 - Print statement";
@@ -69,7 +68,7 @@ public class StudyInfo extends FragmentActivity {
                     "\n\nAre you ready to revolutionize the tech industry? ";
             textViewStudy.setText(tut_1_3);
             tutCount = tutCount + 1;
-            Log.d("Tutorial Count: ","value: " + tutCount);
+            Log.d(TAG,"value: " + tutCount);
         }
         else if (tutCount == 4) {
             String heading = "1.4 - If-Else statement";
@@ -86,7 +85,7 @@ public class StudyInfo extends FragmentActivity {
                     "   print(\"The numbers are different\") ";
             textViewStudy.setText(tut_1_4);
             tutCount = tutCount + 1;
-            Log.d("Tutorial Count: ","value: " + tutCount);
+            Log.d(TAG,"value: " + tutCount);
         }
         else if (tutCount == 5) {
             String heading = "1.5 - Assigning values";
@@ -99,7 +98,7 @@ public class StudyInfo extends FragmentActivity {
                     "we learn more about programming. ";
             textViewStudy.setText(tut_1_5);
             tutCount = tutCount + 1;
-            Log.d("Tutorial Count: ","value: " + tutCount);
+            Log.d(TAG,"value: " + tutCount);
         }
         else if (tutCount == 6) {
             String heading = "1.6 - = and ==";
@@ -111,7 +110,7 @@ public class StudyInfo extends FragmentActivity {
                     "to determine if variable t is equal to 10, you would write t == 10. ";
             textViewStudy.setText(tut_1_6);
             tutCount = tutCount + 1;
-            Log.d("Tutorial Count: ","value: " + tutCount);
+            Log.d(TAG,"value: " + tutCount);
         }
         else if (tutCount == 7) {
             String heading = "1.7 - Line order in programming";
@@ -126,7 +125,7 @@ public class StudyInfo extends FragmentActivity {
                     "variable before that point in the code. ";
             textViewStudy.setText(tut_1_7);
             tutCount = tutCount + 1;
-            Log.d("Tutorial Count: ","value: " + tutCount);
+            Log.d(TAG,"value: " + tutCount);
         }
         else if (tutCount == 8) {
             String heading = "1.8 - Flashcards";
@@ -137,7 +136,7 @@ public class StudyInfo extends FragmentActivity {
                     "you should complete the first tasks before continuing to the next.";
             textViewStudy.setText(tut_1_8);
             tutCount = tutCount + 1;
-            Log.d("Tutorial Count: ","value: " + tutCount);
+            Log.d(TAG,"value: " + tutCount);
         }
         else{
             String heading = "completed! \n\nCongratulations!";
@@ -149,10 +148,10 @@ public class StudyInfo extends FragmentActivity {
 
     public void startPractiseBot(View view) {
         //On Button click, user is directed to the practise screen where the bot gives practise tests
-        Log.d("Practise Bot Page", "Here");
+        Log.d(TAG, "Here");
 
         Intent intent = new Intent(this, PractiseBot.class);
-        intent.putExtra("tutorial_next", tutCount);
+        intent.putExtra(getString(R.string.intent_next_tutorial_id), tutCount);
         startActivity(intent);
     }
 

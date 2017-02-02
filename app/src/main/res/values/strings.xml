@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CodeBot</string>
+    <string name="intent_next_tutorial_id">tutorial_next</string>
 </resources>

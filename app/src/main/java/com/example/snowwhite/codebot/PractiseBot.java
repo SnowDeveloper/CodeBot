@@ -25,8 +25,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static android.R.attr.button;
-
 public class PractiseBot extends FragmentActivity {
     public static final String TAG = "CodeBot";
     private final Random random = new Random();
@@ -34,6 +32,7 @@ public class PractiseBot extends FragmentActivity {
             + Long.toHexString(random.nextLong());
     // EIYRHFKXVNNJHIV2GR4WDLW3FOAGJTRL
     // IWFL3ZGUYTQIL4KJAWY5GRLF7S2JZDIC
+    // MQB36LQOLR4DMQ5DYPHFSQNPH2FXQHOI
     private final String WIT_TOKEN = "MQB36LQOLR4DMQ5DYPHFSQNPH2FXQHOI";
 
     private RecyclerView mRecyclerView;
@@ -52,7 +51,7 @@ public class PractiseBot extends FragmentActivity {
         setContentView(R.layout.activity_practise_bot);
 
         Intent intent = getIntent();
-        tutCount = intent.getExtras().getInt("tutorial_next");
+        tutCount = intent.getExtras().getInt(getString(R.string.intent_next_tutorial_id));
 
         AndroidNetworking.initialize(getApplicationContext());
 
@@ -90,21 +89,17 @@ public class PractiseBot extends FragmentActivity {
             public void onClick(View v) {
                 // Perform action on click
 
+                Intent activityChangeIntent = new Intent(PractiseBot.this, StudyInfo.class);
+                activityChangeIntent.putExtra(getString(R.string.intent_next_tutorial_id), tutCount);
+                PractiseBot.this.startActivity(activityChangeIntent);
                 //If the practise is not completed then user cannot go to the next tutorial
-                AlertDialog.Builder builder = new AlertDialog.Builder(PractiseBot.this);
-                if (responseCount != 0) {
-                    Log.v("sendEmailButton_onClick", "Invalid input provided");
-                    builder.setMessage("You have not completed the practise. Please retry!").show();
-                    return;
-                }
-
-                else {
-                    Intent activityChangeIntent = new Intent(PractiseBot.this, StudyInfo.class);
-                    activityChangeIntent.putExtra("tutorial_next",tutCount);
-                    PractiseBot.this.startActivity(activityChangeIntent);
-                }
-
-
+                // This doesnt work correctly, so currently disabled
+//                AlertDialog.Builder builder = new AlertDialog.Builder(PractiseBot.this);
+//                if (responseCount != 0) {
+//                    builder.setMessage("You have not completed the practise. Please retry!").show();
+//                    return;
+//                } else {
+//                }
             }
         });
     }
@@ -123,9 +118,6 @@ public class PractiseBot extends FragmentActivity {
     }
 
     private void chatToWit(String input) {
-        String session_id = Long.toHexString(random.nextLong()) + Long.toHexString(random.nextLong())
-                + Long.toHexString(random.nextLong());
-
         AndroidNetworking.post(String.format("https://api.wit.ai/converse?q=%s&session_id=%s", input, session_id))
 
                 .addHeaders("Authorization", "Bearer " + WIT_TOKEN)
@@ -155,7 +147,6 @@ public class PractiseBot extends FragmentActivity {
     }
 
     private void sendMessage(String message) {
-        Log.d("This is it:", message);
         chatToWit(message);
         displayMessage(message, true, ChatMessage.MessageType.NORMAL);
     }
