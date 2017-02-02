@@ -2,14 +2,14 @@ package com.example.snowwhite.codebot;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -19,6 +19,7 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class PractiseBot extends FragmentActivity {
@@ -26,9 +27,12 @@ public class PractiseBot extends FragmentActivity {
     private final Random random = new Random();
     private final String WIT_TOKEN = "EIYRHFKXVNNJHIV2GR4WDLW3FOAGJTRL";
 
-    private EditText editText;
-    private ViewGroup messageHolder;
-    private ImageView myMsgBtn;
+    private RecyclerView mRecyclerView;
+    private Button mButtonSend;
+    private EditText mEditTextMessage;
+    private ImageView mImageView;
+
+    private ChatMessageAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,36 +41,40 @@ public class PractiseBot extends FragmentActivity {
 
         AndroidNetworking.initialize(getApplicationContext());
 
-        editText = (EditText) findViewById(R.id.userInput);
-        messageHolder = (ViewGroup) findViewById(R.id.message_holder);
-        myMsgBtn = (ImageView) findViewById(R.id.sendUserInput);
-        myMsgBtn.setOnClickListener(new View.OnClickListener() {
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mButtonSend = (Button) findViewById(R.id.btn_send);
+        mEditTextMessage = (EditText) findViewById(R.id.et_message);
+        mImageView = (ImageView) findViewById(R.id.iv_image);
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        mAdapter = new ChatMessageAdapter(this, new ArrayList<ChatMessage>());
+        mRecyclerView.setAdapter(mAdapter);
+
+        mButtonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Perform action on click
-                displayOwnMessage(editText.getText().toString());
-                chatToWit(editText.getText().toString());
-                Log.d(TAG, String.format("sendUserInput: %s", editText.getText().toString()));
+                String message = mEditTextMessage.getText().toString();
+                if (TextUtils.isEmpty(message)) {
+                    return;
+                }
+                sendMessage(message);
+                mEditTextMessage.setText("");
+            }
+        });
+
+        mImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendMessage("info");
             }
         });
     }
 
-    private void displayBotMessage(String message) {
-        LayoutInflater inflater = LayoutInflater.from(this);
-        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.bot_responses, messageHolder, false);
-
-        TextView child = (TextView) layout.getChildAt(2);
-        child.setText(message);
-        messageHolder.addView(layout);
-    }
-
-    private void displayOwnMessage(String message) {
-        LayoutInflater inflater = LayoutInflater.from(this);
-        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.user_responses, messageHolder, false);
-
-        TextView child = (TextView) layout.getChildAt(0);
-        child.setText(message);
-        messageHolder.addView(layout);
+    private void displayMessage(String message, boolean ownMessage) {
+        ChatMessage chatMessage = new ChatMessage(message, ownMessage, false);
+        mAdapter.add(chatMessage);
+        mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
     }
 
     private void chatToWit(String input) {
@@ -84,7 +92,7 @@ public class PractiseBot extends FragmentActivity {
                         // do anything with response
                         try {
                             Log.d(TAG, "onResponse message: " + response.getString("msg"));
-                            displayBotMessage(response.getString("msg"));
+                            displayMessage(response.getString("msg"), false);
                         } catch (JSONException e) {
                             Log.d(TAG, String.format("onResponse: %s", response));
                             Log.e(TAG, "onResponse: ", e);
@@ -97,6 +105,18 @@ public class PractiseBot extends FragmentActivity {
                         Log.d(TAG, String.format("onError: %s", error));
                     }
                 });
+    }
+
+    private void sendMessage(String message) {
+        chatToWit(message);
+        displayMessage(message, true);
+    }
+
+    private void sendMessage() {
+        ChatMessage chatMessage = new ChatMessage(null, true, true);
+        mAdapter.add(chatMessage);
+
+//        mimicOtherMessage();
     }
 
 }
