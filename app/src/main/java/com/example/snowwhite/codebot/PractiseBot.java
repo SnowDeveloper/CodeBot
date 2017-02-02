@@ -30,14 +30,11 @@ import static android.R.attr.button;
 public class PractiseBot extends FragmentActivity {
     public static final String TAG = "CodeBot";
     private final Random random = new Random();
-<<<<<<< HEAD
-    private final String WIT_TOKEN = "IWFL3ZGUYTQIL4KJAWY5GRLF7S2JZDIC";
     String session_id = Long.toHexString(random.nextLong()) + Long.toHexString(random.nextLong())
             + Long.toHexString(random.nextLong());
-=======
     // EIYRHFKXVNNJHIV2GR4WDLW3FOAGJTRL
+    // IWFL3ZGUYTQIL4KJAWY5GRLF7S2JZDIC
     private final String WIT_TOKEN = "MQB36LQOLR4DMQ5DYPHFSQNPH2FXQHOI";
->>>>>>> 096f075b9c0e3f3222ae2bedfb7de9b7ba0131bb
 
     private RecyclerView mRecyclerView;
     private Button mButtonSend;
@@ -126,17 +123,10 @@ public class PractiseBot extends FragmentActivity {
     }
 
     private void chatToWit(String input) {
-<<<<<<< HEAD
-
-
-        AndroidNetworking.post(String.format("https://api.wit.ai/converse?q=%s&session_id=%s",
-                input, session_id))
-=======
         String session_id = Long.toHexString(random.nextLong()) + Long.toHexString(random.nextLong())
                 + Long.toHexString(random.nextLong());
 
         AndroidNetworking.post(String.format("https://api.wit.ai/converse?q=%s&session_id=%s", input, session_id))
->>>>>>> 096f075b9c0e3f3222ae2bedfb7de9b7ba0131bb
 
                 .addHeaders("Authorization", "Bearer " + WIT_TOKEN)
                 .setPriority(Priority.MEDIUM)
@@ -170,13 +160,9 @@ public class PractiseBot extends FragmentActivity {
         displayMessage(message, true, ChatMessage.MessageType.NORMAL);
     }
 
-<<<<<<< HEAD
-=======
     public void onItemClicked(View view, LinearLayout options) {
         Log.d(TAG, String.format("onItemClicked: %s", ((Button) (view)).getText()));
         sendMessage(((Button) view).getText().toString());
         options.removeAllViews();
     }
-
->>>>>>> 096f075b9c0e3f3222ae2bedfb7de9b7ba0131bb
 }
