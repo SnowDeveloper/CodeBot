@@ -1,5 +1,7 @@
 package com.example.snowwhite.codebot;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,15 +24,22 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static android.R.attr.button;
+
 public class PractiseBot extends FragmentActivity {
     public static final String TAG = "CodeBot";
     private final Random random = new Random();
-    private final String WIT_TOKEN = "EIYRHFKXVNNJHIV2GR4WDLW3FOAGJTRL";
+    private final String WIT_TOKEN = "IWFL3ZGUYTQIL4KJAWY5GRLF7S2JZDIC";
+    String session_id = Long.toHexString(random.nextLong()) + Long.toHexString(random.nextLong())
+            + Long.toHexString(random.nextLong());
 
     private RecyclerView mRecyclerView;
     private Button mButtonSend;
+    private Button nxtTutBtn;
     private EditText mEditTextMessage;
     private ImageView mImageView;
+    int responseCount = 0;
+    int tutCount = 0;
 
     private ChatMessageAdapter mAdapter;
 
@@ -39,10 +48,14 @@ public class PractiseBot extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practise_bot);
 
+        Intent intent = getIntent();
+        tutCount = intent.getExtras().getInt("tutorial_next");
+
         AndroidNetworking.initialize(getApplicationContext());
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mButtonSend = (Button) findViewById(R.id.btn_send);
+        nxtTutBtn = (Button) findViewById(R.id.nextTutBtn);
         mEditTextMessage = (EditText) findViewById(R.id.et_message);
         mImageView = (ImageView) findViewById(R.id.iv_image);
 
@@ -69,6 +82,28 @@ public class PractiseBot extends FragmentActivity {
                 sendMessage("info");
             }
         });
+
+        nxtTutBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+
+                //If the practise is not completed then user cannot go to the next tutorial
+                AlertDialog.Builder builder = new AlertDialog.Builder(PractiseBot.this);
+                if (responseCount != 0) {
+                    Log.v("sendEmailButton_onClick", "Invalid input provided");
+                    builder.setMessage("You have not completed the practise. Please retry!").show();
+                    return;
+                }
+
+                else {
+                    Intent activityChangeIntent = new Intent(PractiseBot.this, StudyInfo.class);
+                    activityChangeIntent.putExtra("tutorial_next",tutCount);
+                    PractiseBot.this.startActivity(activityChangeIntent);
+                }
+
+
+            }
+        });
     }
 
     private void displayMessage(String message, boolean ownMessage) {
@@ -78,8 +113,8 @@ public class PractiseBot extends FragmentActivity {
     }
 
     private void chatToWit(String input) {
-        String session_id = Long.toHexString(random.nextLong()) + Long.toHexString(random.nextLong())
-                + Long.toHexString(random.nextLong());
+
+
         AndroidNetworking.post(String.format("https://api.wit.ai/converse?q=%s&session_id=%s",
                 input, session_id))
 
@@ -90,11 +125,12 @@ public class PractiseBot extends FragmentActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         // do anything with response
+                        responseCount = responseCount + 1;
+                        Log.d(TAG, String.format("onResponse: %s", response));
                         try {
                             Log.d(TAG, "onResponse message: " + response.getString("msg"));
                             displayMessage(response.getString("msg"), false);
                         } catch (JSONException e) {
-                            Log.d(TAG, String.format("onResponse: %s", response));
                             Log.e(TAG, "onResponse: ", e);
                         }
                     }
@@ -108,15 +144,9 @@ public class PractiseBot extends FragmentActivity {
     }
 
     private void sendMessage(String message) {
+        Log.d("This is it:", message);
         chatToWit(message);
         displayMessage(message, true);
-    }
-
-    private void sendMessage() {
-        ChatMessage chatMessage = new ChatMessage(null, true, true);
-        mAdapter.add(chatMessage);
-
-//        mimicOtherMessage();
     }
 
 }

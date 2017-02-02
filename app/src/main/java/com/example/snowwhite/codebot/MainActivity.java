@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("StudyInfo Page", "Here");
 
         Intent intent = new Intent(this, StudyInfo.class);
+        intent.putExtra("tutorial_next",0);
         startActivity(intent);
     }
 

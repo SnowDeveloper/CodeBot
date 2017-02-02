@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 public class StudyInfo extends FragmentActivity {
 
+    String val;
+    private int tutCount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,8 +21,8 @@ public class StudyInfo extends FragmentActivity {
         TextView textViewHeading = (TextView) findViewById(R.id.txtViewHeading);
         TextView textViewStudy = (TextView) findViewById(R.id.studyTextView);
 
-        //Adding counter to save the number of tutorials taken by the user
-        int tutCount = 0;
+        Intent intent = getIntent();
+        tutCount = intent.getExtras().getInt("tutorial_next");
 
         //Based on the count, the specific tutorial gets loaded in the screen
         if (tutCount == 0) {
@@ -149,6 +152,7 @@ public class StudyInfo extends FragmentActivity {
         Log.d("Practise Bot Page", "Here");
 
         Intent intent = new Intent(this, PractiseBot.class);
+        intent.putExtra("tutorial_next", tutCount);
         startActivity(intent);
     }
 
