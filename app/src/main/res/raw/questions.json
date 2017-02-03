@@ -5,13 +5,13 @@
       "notes": "Bla-bla",
       "questions": [
         {
-          "question": "Question 1: Do you want to learn programming?",
-          "hint": "You can lead a horse to water, but you can't make it drink",
-          "answer": "Sure!",
+          "question": "!!change options!! Question 1: What is the output of: print(\"CodeBot is fun!\")?",
+          "hint": "The result after execution",
+          "answer": "CodeBot is fun!",
           "options": [
-            "Sure!",
-            "Maybe later",
-            "What is that?"
+            "(„Hello“)",
+            "Hello",
+            "Error"
           ]
         },
         {
@@ -22,6 +22,16 @@
             "return",
             "print",
             "echo"
+          ]
+        },
+        {
+          "question": "Question 3: Do you want to learn programming?",
+          "hint": "You can lead a horse to water, but you can't make it drink",
+          "answer": "Sure!",
+          "options": [
+            "Sure!",
+            "Maybe later",
+            "What is that?"
           ]
         }
       ]
