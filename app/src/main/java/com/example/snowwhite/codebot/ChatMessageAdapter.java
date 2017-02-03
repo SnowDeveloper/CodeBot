@@ -65,15 +65,17 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
             holder.ivImage.setImageResource(R.drawable.code_bot);
         } else if (chatMessage.isMultipleChoice()) {
             for (String option : chatMessage.getOptions()) {
-                Button child = new Button(mContext);
-                child.setText(option);
-                child.setOnClickListener(new View.OnClickListener() {
+                LayoutInflater inflater = LayoutInflater.from(mContext);
+                Button button = (Button) inflater.inflate(R.layout.option_button, holder.options, false);
+
+                button.setText(option);
+                button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         ((PractiseBot) mContext).onItemClicked(view, holder.options);
                     }
                 });
-                holder.options.addView(child);
+                holder.options.addView(button);
             }
             if (!chatMessage.getContent().isEmpty()) {
                 holder.tvMessage.setVisibility(View.VISIBLE);
