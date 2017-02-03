@@ -186,9 +186,9 @@ public class PractiseBot extends FragmentActivity {
             case ASK:
                 currentQuestion = getPythonQuestion();
                 if (currentQuestion.options != null) {
-                    setupChoice(currentQuestion.question + " (dbg) " + currentQuestion.answer, currentQuestion.options);
+                    setupChoice(currentQuestion.question, currentQuestion.options);
                 } else {
-                    displayMessage(currentQuestion.question + " (dbg) " + currentQuestion.answer, false, ChatMessage.MessageType.NORMAL);
+                    displayMessage(currentQuestion.question, false, ChatMessage.MessageType.NORMAL);
                 }
                 state = State.ANSWER;
                 break;

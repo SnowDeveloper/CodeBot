@@ -5,12 +5,12 @@
       "notes": "Bla-bla",
       "questions": [
         {
-          "question": "!!change options!! Question 1: What is the output of: print(\"CodeBot is fun!\")?",
+          "question": "Question 1: What is the output of: print(\"Welcome :)\")?",
           "hint": "The result after execution",
-          "answer": "CodeBot is fun!",
+          "answer": "Welcome :)",
           "options": [
-            "(„Hello“)",
-            "Hello",
+            "Welcome :)",
+            "Welcome",
             "Error"
           ]
         },
