@@ -12,8 +12,8 @@
         app:cmv_arrowGravity="start"
         app:cmv_arrowMargin="3dp"
         app:cmv_arrowPosition="right"
-        app:cmv_backgroundColor="#00ffd2"
-        app:cmv_backgroundColorPressed="#00ffd2"
+        app:cmv_backgroundColor="#E8D67D"
+        app:cmv_backgroundColorPressed="#E8D67D"
         app:cmv_contentPadding="0dp"
         app:cmv_cornerRadius="3dp"
         app:cmv_showArrow="true">
