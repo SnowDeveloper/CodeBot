@@ -13,7 +13,8 @@
         {
           "question": "Question 2: Fill in the blank: ____(\"Cody is fun!\")",
           "hint": "Keyword for printing something",
-          "answer": "print"
+          "answer": "print",
+          "options":["return","print","echo"]
         }
       ]
     },
