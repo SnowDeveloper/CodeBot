@@ -57,6 +57,7 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
     public void onBindViewHolder(final MessageHolder holder, int position) {
         ChatMessage chatMessage = mMessages.get(position);
         holder.ivImage.setVisibility(View.GONE);
+        holder.tvMessage.setVisibility(View.GONE);
         if (chatMessage.isImage()) {
             holder.ivImage.setVisibility(View.VISIBLE);
             holder.tvMessage.setVisibility(View.GONE);
@@ -74,14 +75,17 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
                 });
                 holder.options.addView(child);
             }
-            holder.tvMessage.setVisibility(View.VISIBLE);
-            holder.tvMessage.setText(chatMessage.getContent());
+            if (!chatMessage.getContent().isEmpty()) {
+                holder.tvMessage.setVisibility(View.VISIBLE);
+                holder.tvMessage.setText(chatMessage.getContent());
+            }
 
         } else {
             holder.ivImage.setVisibility(View.GONE);
-            holder.tvMessage.setVisibility(View.VISIBLE);
-
-            holder.tvMessage.setText(chatMessage.getContent());
+            if (!chatMessage.getContent().isEmpty()) {
+                holder.tvMessage.setVisibility(View.VISIBLE);
+                holder.tvMessage.setText(chatMessage.getContent());
+            }
         }
 
         String date = new SimpleDateFormat("hh:mm aa", Locale.getDefault()).format(new Date());

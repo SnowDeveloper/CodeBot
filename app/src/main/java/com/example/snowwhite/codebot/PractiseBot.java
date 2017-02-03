@@ -175,7 +175,11 @@ public class PractiseBot extends FragmentActivity {
         switch (state) {
             case ASK:
                 currentQuestion = getPythonQuestion();
-                displayMessage(currentQuestion.question + " (dbg) " + currentQuestion.answer, false, ChatMessage.MessageType.NORMAL);
+                if (currentQuestion.options != null) {
+                    setupChoice(currentQuestion.question + " (dbg) " + currentQuestion.answer, currentQuestion.options);
+                } else {
+                    displayMessage(currentQuestion.question + " (dbg) " + currentQuestion.answer, false, ChatMessage.MessageType.NORMAL);
+                }
                 state = State.ANSWER;
                 break;
             case ANSWER:
@@ -185,11 +189,16 @@ public class PractiseBot extends FragmentActivity {
                     state = State.ASK;
                     onUserMessage("");
                 } else if (state == State.ANSWER) {
-                    displayMessage("Hint: " + currentQuestion.hint, false, ChatMessage.MessageType.NORMAL);
+                    if (currentQuestion.options != null) {
+                        setupChoice("Hint: " + currentQuestion.hint, currentQuestion.options);
+                    } else {
+                        displayMessage("Hint: " + currentQuestion.hint, false, ChatMessage.MessageType.NORMAL);
+                    }
                     state = State.HINT;
                 } else {
                     displayMessage("The answer was " + currentQuestion.answer, false, ChatMessage.MessageType.NORMAL);
                     state = State.ASK;
+                    onUserMessage("");
                 }
                 break;
         }
@@ -252,5 +261,6 @@ public class PractiseBot extends FragmentActivity {
 
     private class Question {
         String question, hint, answer;
+        String[] options;
     }
 }
