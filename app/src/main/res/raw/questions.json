@@ -5,23 +5,14 @@
       "notes": "Bla-bla",
       "questions": [
         {
-          "question": "Py Random Question 1",
-          "hint": "Hint 1",
-          "answer": "Py answer1"
+          "question": "Question 1: What is the output of: print(\"Hello, my name is Cody\")?",
+          "hint": "The result after execution",
+          "answer": "Hello, my name is Cody",
+          "options": ["(„Hello“)","Hello","Error"]
         },
         {
-          "question": "Py Random Question 2",
-          "hint": "Hint 2",
-          "answer": "echo"
-        },
-        {
-          "question": "Py Random Question 3",
-          "hint": "Hint 3",
-          "answer": "Py answer3"
-        },
-        {
-          "question": "Py Random Question 4",
-          "hint": "Hint 4",
+          "question": "Question 2: Fill in the blank: ____(\"Cody is fun!\")",
+          "hint": "Keyword for printing something",
           "answer": "print"
         }
       ]
@@ -39,16 +30,6 @@
           "question": "Random Object Question 2",
           "hint": "Random Hint 2",
           "answer": "Random Object answer2"
-        },
-        {
-          "question": "Random Object Question 3",
-          "hint": "Random Hint 3",
-          "answer": "Random Object answer3"
-        },
-        {
-          "question": "Random Object Question 4",
-          "hint": "Random Hint 4",
-          "answer": "Random Object answer4"
         }
       ]
     }
