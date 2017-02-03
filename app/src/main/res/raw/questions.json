@@ -1,0 +1,110 @@
+{
+  "python": [
+    {
+      "topic": "Printing",
+      "notes": "Bla-bla",
+      "questions": [
+        {
+          "question": "Py Random Question 1",
+          "hint": "Hint 1",
+          "answer": "Py answer1"
+        },
+        {
+          "question": "Py Random Question 2",
+          "hint": "Hint 2",
+          "answer": "echo"
+        },
+        {
+          "question": "Py Random Question 3",
+          "hint": "Hint 3",
+          "answer": "Py answer3"
+        },
+        {
+          "question": "Py Random Question 4",
+          "hint": "Hint 4",
+          "answer": "print"
+        }
+      ]
+    },
+    {
+      "topic": "Objects",
+      "notes": "Another bla",
+      "questions": [
+        {
+          "question": "Random Object Question 1",
+          "hint": "Random Hint 1",
+          "answer": "Random Object answer1"
+        },
+        {
+          "question": "Random Object Question 2",
+          "hint": "Random Hint 2",
+          "answer": "Random Object answer2"
+        },
+        {
+          "question": "Random Object Question 3",
+          "hint": "Random Hint 3",
+          "answer": "Random Object answer3"
+        },
+        {
+          "question": "Random Object Question 4",
+          "hint": "Random Hint 4",
+          "answer": "Random Object answer4"
+        }
+      ]
+    }
+  ],
+  "ruby": [
+    {
+      "topic": "Mixins",
+      "notes": "Bla-bla",
+      "questions": [
+        {
+          "question": "Rb Random Question 1",
+          "hint": "Hint 1",
+          "answer": "Py answer1"
+        },
+        {
+          "question": "Rb Random Question 2",
+          "hint": "Hint 2",
+          "answer": "Py answer2"
+        },
+        {
+          "question": "Rb Random Question 3",
+          "hint": "Hint 3",
+          "answer": "Py answer3"
+        },
+        {
+          "question": "Rb Random Question 4",
+          "hint": "Hint 4",
+          "answer": "Py answer4"
+        }
+      ]
+    },
+    {
+      "topic": "Rails",
+      "notes": "Another bla",
+      "questions": [
+        {
+          "question": "Rb Random Object Question 1",
+          "hint": "Random Hint 1",
+          "answer": "Random Object answer1"
+        },
+        {
+          "question": "Rb Random Object Question 2",
+          "hint": "Random Hint 2",
+          "answer": "Random Object answer2"
+        },
+        {
+          "question": "Rb Random Object Question 3",
+          "hint": "Random Hint 3",
+          "answer": "Random Object answer3"
+        },
+        {
+          "question": "Rb Random Object Question 4",
+          "hint": "Random Hint 4",
+          "answer": "Random Object answer4"
+        }
+      ]
+    }
+  ]
+}

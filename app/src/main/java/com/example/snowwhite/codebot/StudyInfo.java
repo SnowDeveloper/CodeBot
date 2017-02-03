@@ -43,7 +43,7 @@ public class StudyInfo extends FragmentActivity {
             textViewHeading.setText(heading);
             String tut_1_1 = "Technology is becoming incredibly important throughout the world. " +
                     "\n\nDemand is increasing on a daily basis for programmers to create that " +
-                    "\n\ntechnology. ";
+                    "technology. ";
             textViewStudy.setText(tut_1_1);
             tutCount = tutCount + 1;
             Log.d(TAG,"value: " + tutCount);

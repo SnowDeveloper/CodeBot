@@ -18,10 +18,15 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -44,6 +49,7 @@ public class PractiseBot extends FragmentActivity {
     int tutCount = 0;
 
     private ChatMessageAdapter mAdapter;
+    private Questions questions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +108,8 @@ public class PractiseBot extends FragmentActivity {
 //                }
             }
         });
+
+        loadQuestions();
     }
 
     private void displayMessage(String message, boolean ownMessage, ChatMessage.MessageType type) {
@@ -155,5 +163,35 @@ public class PractiseBot extends FragmentActivity {
         Log.d(TAG, String.format("onItemClicked: %s", ((Button) (view)).getText()));
         sendMessage(((Button) view).getText().toString());
         options.removeAllViews();
+    }
+
+    public void loadQuestions() {
+        InputStream jsonFile = getResources().openRawResource(R.raw.questions);
+
+        Gson gson = new Gson();
+        questions = gson.fromJson(new BufferedReader(new InputStreamReader(jsonFile)), Questions.class);
+
+        try {
+            jsonFile.close();
+        } catch (IOException e) {
+            Log.e(TAG, "loadQuestions: close", e);
+        }
+        Log.e(TAG, "loadQuestions: ");
+    }
+
+    private class Questions {
+        Language[] python;
+        Language[] ruby;
+
+        private class Language {
+            Question[] questions;
+            String topic, notes;
+
+            private class Question {
+                String question, hint, answer;
+            }
+        }
+
+
     }
 }
