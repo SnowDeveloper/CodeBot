@@ -1,6 +1,5 @@
 package com.example.snowwhite.codebot;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -28,10 +27,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class PractiseBot extends FragmentActivity {
     public static final String TAG = "CodeBot";
+
+    private enum State {ASK, ANSWER, HINT}
+
+    private State state = State.ASK;
+    private Question currentQuestion;
+
     private final Random random = new Random();
     String session_id = Long.toHexString(random.nextLong()) + Long.toHexString(random.nextLong())
             + Long.toHexString(random.nextLong());
@@ -47,6 +53,9 @@ public class PractiseBot extends FragmentActivity {
     private ImageView mImageView;
     int responseCount = 0;
     int tutCount = 0;
+    private int topicCounter = 0;
+    private int questionCounter = 0;
+
 
     private ChatMessageAdapter mAdapter;
     private Questions questions;
@@ -110,6 +119,7 @@ public class PractiseBot extends FragmentActivity {
         });
 
         loadQuestions();
+        onUserMessage("");
     }
 
     private void displayMessage(String message, boolean ownMessage, ChatMessage.MessageType type) {
@@ -155,8 +165,34 @@ public class PractiseBot extends FragmentActivity {
     }
 
     private void sendMessage(String message) {
-        chatToWit(message);
+//        chatToWit(message);
         displayMessage(message, true, ChatMessage.MessageType.NORMAL);
+
+        onUserMessage(message);
+    }
+
+    private void onUserMessage(String message) {
+        switch (state) {
+            case ASK:
+                currentQuestion = getPythonQuestion();
+                displayMessage(currentQuestion.question + " (dbg) " + currentQuestion.answer, false, ChatMessage.MessageType.NORMAL);
+                state = State.ANSWER;
+                break;
+            case ANSWER:
+            case HINT:
+                if (message.equals(currentQuestion.answer)) {
+                    displayMessage("Correct", false, ChatMessage.MessageType.NORMAL);
+                    state = State.ASK;
+                    onUserMessage("");
+                } else if (state == State.ANSWER) {
+                    displayMessage("Hint: " + currentQuestion.hint, false, ChatMessage.MessageType.NORMAL);
+                    state = State.HINT;
+                } else {
+                    displayMessage("The answer was " + currentQuestion.answer, false, ChatMessage.MessageType.NORMAL);
+                    state = State.ASK;
+                }
+                break;
+        }
     }
 
     public void onItemClicked(View view, LinearLayout options) {
@@ -165,7 +201,7 @@ public class PractiseBot extends FragmentActivity {
         options.removeAllViews();
     }
 
-    public void loadQuestions() {
+    private void loadQuestions() {
         InputStream jsonFile = getResources().openRawResource(R.raw.questions);
 
         Gson gson = new Gson();
@@ -176,22 +212,42 @@ public class PractiseBot extends FragmentActivity {
         } catch (IOException e) {
             Log.e(TAG, "loadQuestions: close", e);
         }
-        Log.e(TAG, "loadQuestions: ");
+        Log.d(TAG, "loadQuestions: ");
+    }
+
+    private Question getPythonQuestion() {
+        try {
+            Language language = questions.python.get(topicCounter);
+            try {
+                Question question = language.questions.get(questionCounter);
+                questionCounter++;
+                return question;
+            } catch (IndexOutOfBoundsException e) {
+                topicCounter++;
+                questionCounter = 0;
+                return getPythonQuestion();
+            }
+        } catch (IndexOutOfBoundsException e) {
+            Log.e(TAG, "getPythonQuestion: no more questions left");
+            Question question = new Question();
+            question.answer = "";
+            question.hint = "";
+            question.question = "No questions left";
+            return question;
+        }
     }
 
     private class Questions {
-        Language[] python;
-        Language[] ruby;
+        List<Language> python;
+        List<Language> ruby;
+    }
 
-        private class Language {
-            Question[] questions;
-            String topic, notes;
+    private class Language {
+        List<Question> questions;
+        String topic, notes;
+    }
 
-            private class Question {
-                String question, hint, answer;
-            }
-        }
-
-
+    private class Question {
+        String question, hint, answer;
     }
 }
