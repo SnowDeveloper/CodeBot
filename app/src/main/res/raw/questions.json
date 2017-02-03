@@ -5,9 +5,9 @@
       "notes": "Bla-bla",
       "questions": [
         {
-          "question": "Question 1: What is the output of: print(\"Hello, my name is Cody\")?",
+          "question": "Question 1: What is the output of: print(\"CodeBot is fun!\")?",
           "hint": "The result after execution",
-          "answer": "Hello, my name is Cody",
+          "answer": "CodeBot is fun!",
           "options": ["(„Hello“)","Hello","Error"]
         },
         {
