@@ -64,6 +64,7 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
 
             holder.ivImage.setImageResource(R.drawable.code_bot);
         } else if (chatMessage.isMultipleChoice()) {
+            holder.options.removeAllViews();
             for (String option : chatMessage.getOptions()) {
                 LayoutInflater inflater = LayoutInflater.from(mContext);
                 Button button = (Button) inflater.inflate(R.layout.option_button, holder.options, false);

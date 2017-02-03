@@ -1,6 +1,7 @@
 package com.example.snowwhite.codebot;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -32,6 +33,7 @@ import java.util.Random;
 
 public class PractiseBot extends FragmentActivity {
     public static final String TAG = "CodeBot";
+    private Handler handler;
 
     private enum State {ASK, ANSWER, HINT}
 
@@ -64,6 +66,8 @@ public class PractiseBot extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practise_bot);
+
+        handler = new Handler();
 
         Intent intent = getIntent();
         tutCount = intent.getExtras().getInt(getString(R.string.intent_next_tutorial_id));
@@ -164,11 +168,17 @@ public class PractiseBot extends FragmentActivity {
                 });
     }
 
-    private void sendMessage(String message) {
+    private void sendMessage(final String message) {
 //        chatToWit(message);
         displayMessage(message, true, ChatMessage.MessageType.NORMAL);
 
-        onUserMessage(message);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                onUserMessage(message);
+            }
+        }, 400);
     }
 
     private void onUserMessage(String message) {
@@ -185,9 +195,14 @@ public class PractiseBot extends FragmentActivity {
             case ANSWER:
             case HINT:
                 if (message.equals(currentQuestion.answer)) {
-                    displayMessage("Correct", false, ChatMessage.MessageType.NORMAL);
+                    displayMessage("Correct!", false, ChatMessage.MessageType.NORMAL);
                     state = State.ASK;
-                    onUserMessage("");
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            onUserMessage("");
+                        }
+                    }, 1200);
                 } else if (state == State.ANSWER) {
                     if (currentQuestion.options != null) {
                         setupChoice("Hint: " + currentQuestion.hint, currentQuestion.options);
@@ -198,7 +213,12 @@ public class PractiseBot extends FragmentActivity {
                 } else {
                     displayMessage("The answer was " + currentQuestion.answer, false, ChatMessage.MessageType.NORMAL);
                     state = State.ASK;
-                    onUserMessage("");
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            onUserMessage("");
+                        }
+                    }, 400);
                 }
                 break;
         }

@@ -5,16 +5,24 @@
       "notes": "Bla-bla",
       "questions": [
         {
-          "question": "Question 1: What is the output of: print(\"Hello, my name is Cody\")?",
-          "hint": "The result after execution",
-          "answer": "Hello, my name is Cody",
-          "options": ["(„Hello“)","Hello","Error"]
+          "question": "Question 1: Do you want to learn programming?",
+          "hint": "You can lead a horse to water, but you can't make it drink",
+          "answer": "Sure!",
+          "options": [
+            "Sure!",
+            "Maybe later",
+            "What is that?"
+          ]
         },
         {
           "question": "Question 2: Fill in the blank: ____(\"Cody is fun!\")",
           "hint": "Keyword for printing something",
           "answer": "print",
-          "options":["return","print","echo"]
+          "options": [
+            "return",
+            "print",
+            "echo"
+          ]
         }
       ]
     },
@@ -23,12 +31,12 @@
       "notes": "Another bla",
       "questions": [
         {
-          "question": "Random Object Question 1",
+          "question": "TODO Random Object Question 1",
           "hint": "Random Hint 1",
           "answer": "Random Object answer1"
         },
         {
-          "question": "Random Object Question 2",
+          "question": "TODO Random Object Question 2",
           "hint": "Random Hint 2",
           "answer": "Random Object answer2"
         }
