@@ -232,7 +232,10 @@ public class PractiseBot extends FragmentActivity {
             Question question = new Question();
             question.answer = "";
             question.hint = "";
-            question.question = "No questions left";
+            question.question = "Congrats! \n You've finished the Practice. \n Please click on button -> " +
+                    "Go To Next Tutorial ";
+            //Re-direct to the next tutorial
+
             return question;
         }
     }

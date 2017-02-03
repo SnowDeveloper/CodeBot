@@ -8,38 +8,18 @@
     tools:context="com.example.snowwhite.codebot.StudyInfo">
 
 
-    <Button
-        android:id="@+id/practiseBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:onClick="startPractiseBot"
-        android:text="Practise" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@id/practiseBtn"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@id/practiseBtn"
-        android:layout_marginTop="22dp"
-        android:text="Tutorial"
-        android:textColor="#FFFFFF"
-        android:textSize="28sp" />
-
     <TextView
         android:id="@+id/txtViewHeading"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView3"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="12dp"
         android:gravity="center_horizontal"
         android:text="Tutorial"
         android:textColor="#FFFFFF"
-        android:textSize="20sp" />
+        android:textSize="30sp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:id="@+id/studyTextView"
@@ -48,6 +28,32 @@
         android:layout_below="@id/txtViewHeading"
         android:layout_marginTop="18dp"
         android:gravity="center_horizontal"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        android:maxLines = "100"
+        android:scrollbars = "vertical"
+        android:textSize="20sp" />
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:text="Tutorial"
+        android:textColor="#FFFFFF"
+        android:textSize="38sp" />
+
+    <Button
+        android:id="@+id/practiseBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:onClick="startPractiseBot"
+        android:text="Practise"
+        android:textSize="24sp" />
 
 </RelativeLayout>

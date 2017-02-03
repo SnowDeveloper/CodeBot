@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ public class StudyInfo extends FragmentActivity {
 
         TextView textViewHeading = (TextView) findViewById(R.id.txtViewHeading);
         TextView textViewStudy = (TextView) findViewById(R.id.studyTextView);
+        textViewStudy.setMovementMethod(new ScrollingMovementMethod());
 
         Intent intent = getIntent();
         tutCount = intent.getExtras().getInt(getString(R.string.intent_next_tutorial_id));
@@ -29,11 +31,9 @@ public class StudyInfo extends FragmentActivity {
             textViewHeading.setText(heading);
             String tut_1_0 = "The easiest way to explain what coding is, is to say that coding is " +
                     "typing in the code. \n\nCoding is like writing, but in a specific computer " +
-                    "language. Programming means writing up your own code. It is like writing in " +
-                    "foreign language.\n\nA programmer (or developer) is a person who writes a code." +
-                    " \n\nA programmer is like a writer, who writes a book. \n\nPrograms are " +
-                    "lines of code that is understandable for computers. So programs are books " +
-                    "written in a computer language and computer is the reader of this code. ";
+                    "language. It is like writing in foreign language." +
+                    "\n\nA programmer (or developer) is a person who writes a code." +
+                    " \n\nPrograms are lines of code that is understandable for computers";
             textViewStudy.setText(tut_1_0);
             tutCount = tutCount + 1;
             Log.d(TAG,"value: " + tutCount);

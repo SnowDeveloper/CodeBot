@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         app:cmv_arrowGravity="start"
         app:cmv_arrowPosition="left"
-        app:cmv_backgroundColor="#ff00bcc4"
-        app:cmv_backgroundColorPressed="#ff00bcf4"
+        app:cmv_backgroundColor="#FFFF00"
+        app:cmv_backgroundColorPressed="#FFFF00"
         app:cmv_contentPadding="0dp"
         app:cmv_cornerRadius="3dp"
         app:cmv_showArrow="true">
@@ -42,6 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
+                android:textSize="30dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <LinearLayout
