@@ -41,14 +41,14 @@
       "notes": "Another bla",
       "questions": [
         {
-          "question": "TODO Random Object Question 1",
-          "hint": "Random Hint 1",
-          "answer": "Random Object answer1"
-        },
-        {
-          "question": "TODO Random Object Question 2",
-          "hint": "Random Hint 2",
-          "answer": "Random Object answer2"
+          "question": "What is the output of [1, 2, 3] + [4, 5, 6]?",
+          "hint": "Concatenation of two elements",
+          "answer": "[1, 2, 3, 4, 5, 6]",
+          "options": [
+            "[1, 2, 3, 4, 5, 6]",
+            " [1, 2, 3],[4, 5, 6]",
+            "21"
+            ]
         }
       ]
     }
@@ -59,24 +59,15 @@
       "notes": "Bla-bla",
       "questions": [
         {
-          "question": "Rb Random Question 1",
-          "hint": "Hint 1",
-          "answer": "Py answer1"
-        },
-        {
-          "question": "Rb Random Question 2",
-          "hint": "Hint 2",
-          "answer": "Py answer2"
-        },
-        {
-          "question": "Rb Random Question 3",
-          "hint": "Hint 3",
-          "answer": "Py answer3"
-        },
-        {
-          "question": "Rb Random Question 4",
-          "hint": "Hint 4",
-          "answer": "Py answer4"
+          "question": "What is the following function compares elements of both dictionaries dict1, dict2?",
+
+          "hint": "Concatenation of two elements",
+          "answer": "cmp(dict1, dict2)",
+          "options": [
+            "cmp(dict1, dict2)",
+            "dict1.cmp(dict2)",
+            "None"
+          ]
         }
       ]
     },

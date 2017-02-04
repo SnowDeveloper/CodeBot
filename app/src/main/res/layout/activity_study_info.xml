@@ -53,7 +53,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:onClick="startPractiseBot"
-        android:text="Practise"
+        android:text="Practice"
         android:textSize="24sp" />
 
 </RelativeLayout>
