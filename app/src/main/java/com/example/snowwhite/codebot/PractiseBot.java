@@ -49,10 +49,7 @@ public class PractiseBot extends FragmentActivity {
     private final String WIT_TOKEN = "MQB36LQOLR4DMQ5DYPHFSQNPH2FXQHOI";
 
     private RecyclerView mRecyclerView;
-    private Button mButtonSend;
     private Button nxtTutBtn;
-    private EditText mEditTextMessage;
-    private ImageView mImageView;
     int responseCount = 0;
     int tutCount = 0;
     private int topicCounter = 0;
@@ -75,34 +72,12 @@ public class PractiseBot extends FragmentActivity {
         AndroidNetworking.initialize(getApplicationContext());
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        mButtonSend = (Button) findViewById(R.id.btn_send);
         nxtTutBtn = (Button) findViewById(R.id.nextTutBtn);
-        mEditTextMessage = (EditText) findViewById(R.id.et_message);
-        mImageView = (ImageView) findViewById(R.id.iv_image);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mAdapter = new ChatMessageAdapter(this, new ArrayList<ChatMessage>());
         mRecyclerView.setAdapter(mAdapter);
-
-        mButtonSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String message = mEditTextMessage.getText().toString();
-                if (TextUtils.isEmpty(message)) {
-                    return;
-                }
-                sendMessage(message);
-                mEditTextMessage.setText("");
-            }
-        });
-
-        mImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendMessage("python");
-            }
-        });
 
         nxtTutBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
