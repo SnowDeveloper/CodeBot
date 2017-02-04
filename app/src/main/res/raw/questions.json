@@ -19,7 +19,7 @@
           "hint": "Keyword for printing something",
           "answer": "print",
           "options": [
-            "return",
+            "display",
             "print",
             "echo"
           ]

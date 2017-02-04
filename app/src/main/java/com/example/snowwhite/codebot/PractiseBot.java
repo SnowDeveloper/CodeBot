@@ -177,7 +177,7 @@ public class PractiseBot extends FragmentActivity {
                         public void run() {
                             onUserMessage("");
                         }
-                    }, 1200);
+                    }, 1000);
                 } else if (state == State.ANSWER) {
                     if (currentQuestion.options != null) {
                         setupChoice("Hint: " + currentQuestion.hint, currentQuestion.options);
