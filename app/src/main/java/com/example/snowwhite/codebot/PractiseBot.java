@@ -132,41 +132,41 @@ public class PractiseBot extends FragmentActivity {
         mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
     }
 
-    private void setupChoice(String message, String... options) {
+    private void setupChoice(String message, List<String> options) {
         ChatMessage chatMessage = new ChatMessage(message, false, ChatMessage.MessageType.CHOICE);
         chatMessage.setOptions(options);
         mAdapter.add(chatMessage);
         mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
     }
 
-    private void chatToWit(String input) {
-        AndroidNetworking.post(String.format("https://api.wit.ai/converse?q=%s&session_id=%s", input, session_id))
-
-                .addHeaders("Authorization", "Bearer " + WIT_TOKEN)
-                .setPriority(Priority.MEDIUM)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        // do anything with response
-                        responseCount = responseCount + 1;
-                        Log.d(TAG, String.format("onResponse: %s", response));
-                        try {
-                            Log.d(TAG, "onResponse message: " + response.getString("msg"));
-                            displayMessage(response.getString("msg"), false, ChatMessage.MessageType.NORMAL);
-                        } catch (JSONException e) {
-                            Log.e(TAG, "onResponse: ", e);
-                            setupChoice("What you want?", "python", "java");
-                        }
-                    }
-
-                    @Override
-                    public void onError(ANError error) {
-                        // handle error
-                        Log.e(TAG, "onError", error);
-                    }
-                });
-    }
+//    private void chatToWit(String input) {
+//        AndroidNetworking.post(String.format("https://api.wit.ai/converse?q=%s&session_id=%s", input, session_id))
+//
+//                .addHeaders("Authorization", "Bearer " + WIT_TOKEN)
+//                .setPriority(Priority.MEDIUM)
+//                .build()
+//                .getAsJSONObject(new JSONObjectRequestListener() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        // do anything with response
+//                        responseCount = responseCount + 1;
+//                        Log.d(TAG, String.format("onResponse: %s", response));
+//                        try {
+//                            Log.d(TAG, "onResponse message: " + response.getString("msg"));
+//                            displayMessage(response.getString("msg"), false, ChatMessage.MessageType.NORMAL);
+//                        } catch (JSONException e) {
+//                            Log.e(TAG, "onResponse: ", e);
+//                            setupChoice("What you want?", "python", "java");
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onError(ANError error) {
+//                        // handle error
+//                        Log.e(TAG, "onError", error);
+//                    }
+//                });
+//    }
 
     private void sendMessage(final String message) {
 //        chatToWit(message);
@@ -224,9 +224,10 @@ public class PractiseBot extends FragmentActivity {
         }
     }
 
-    public void onItemClicked(View view, LinearLayout options) {
+    public void onItemClicked(View view, Button button) {
         Log.d(TAG, String.format("onItemClicked: %s", ((Button) (view)).getText()));
         sendMessage(((Button) view).getText().toString());
+        currentQuestion.options.remove(((Button) (view)).getText());
 //        options.removeAllViews();
     }
 
@@ -281,6 +282,6 @@ public class PractiseBot extends FragmentActivity {
 
     private class Question {
         String question, hint, answer;
-        String[] options;
+        List<String> options;
     }
 }

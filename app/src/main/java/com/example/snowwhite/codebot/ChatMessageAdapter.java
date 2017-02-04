@@ -77,13 +77,13 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
             holder.options.removeAllViews();
             for (String option : chatMessage.getOptions()) {
                 LayoutInflater inflater = LayoutInflater.from(mContext);
-                Button button = (Button) inflater.inflate(R.layout.option_button, holder.options, false);
+                final Button button = (Button) inflater.inflate(R.layout.option_button, holder.options, false);
 
                 button.setText(option);
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ((PractiseBot) mContext).onItemClicked(view, holder.options);
+                        ((PractiseBot) mContext).onItemClicked(view, button);
                         holder.options.removeAllViews();
                         holder.options.setVisibility(View.GONE);
                     }

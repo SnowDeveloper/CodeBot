@@ -1,10 +1,12 @@
 package com.example.snowwhite.codebot;
 
+import java.util.List;
+
 public class ChatMessage {
     private boolean isMine;
     private String content;
     private MessageType messageType;
-    private String[] options;
+    private List<String> options;
 
     public ChatMessage(String message, boolean mine, MessageType messageType) {
         content = message;
@@ -28,11 +30,11 @@ public class ChatMessage {
         return messageType == MessageType.CHOICE;
     }
 
-    public void setOptions(String[] options) {
+    public void setOptions(List<String> options) {
         this.options = options;
     }
 
-    public String[] getOptions() {
+    public List<String> getOptions() {
         return options;
     }
 
