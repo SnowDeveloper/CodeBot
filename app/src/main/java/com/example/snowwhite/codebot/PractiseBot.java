@@ -69,6 +69,8 @@ public class PractiseBot extends FragmentActivity {
         Intent intent = getIntent();
         tutCount = intent.getExtras().getInt(getString(R.string.intent_next_tutorial_id));
 
+        topicCounter = tutCount - 1;
+
         AndroidNetworking.initialize(getApplicationContext());
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
