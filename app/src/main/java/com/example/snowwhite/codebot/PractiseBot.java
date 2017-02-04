@@ -100,7 +100,7 @@ public class PractiseBot extends FragmentActivity {
         });
 
         loadQuestions();
-        displayMessage("Hello from CodeBot!",false, ChatMessage.MessageType.NORMAL);
+        displayMessage("Hello from CodeBot! :)",false, ChatMessage.MessageType.NORMAL);
 
         handler.postDelayed(new Runnable() {
             @Override
@@ -242,7 +242,7 @@ public class PractiseBot extends FragmentActivity {
                 question.answer = "";
                 question.hint = "";
                 question.question = "Congrats! \n You've finished the Practice. \n Please click on button -> " +
-                        "Go To Next Tutorial ";
+                        "Next Tutorial ";
                 return question;
             }
         } catch (IndexOutOfBoundsException e) {
@@ -251,7 +251,7 @@ public class PractiseBot extends FragmentActivity {
             question.answer = "";
             question.hint = "";
             question.question = "Congrats! \n You've finished the Practice. \n Please click on button -> " +
-                    "Go To Next Tutorial ";
+                    "Next Tutorial ";
             //Re-direct to the next tutorial
 
             return question;

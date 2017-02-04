@@ -3,6 +3,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:textColor="#000000"
     android:background="#F0B275"
-    android:textSize="18sp"
-    android:layout_marginLeft="5dp">
+    android:textSize="22sp"
+    android:layout_marginLeft="5dp"
+    android:textAllCaps="false">
 </Button>

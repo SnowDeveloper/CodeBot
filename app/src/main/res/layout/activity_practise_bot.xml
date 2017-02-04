@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-        android:text="Let The Practise Begin!"
+        android:text="Let The Practice Begin!"
         android:textColor="#FFFFFF"
         android:textSize="26sp" />
 
@@ -27,7 +27,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@id/textView4"
-        android:text="Go To Next Tutorial" />
+        android:text="Next Tutorial"
+        android:textSize="25dp"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
