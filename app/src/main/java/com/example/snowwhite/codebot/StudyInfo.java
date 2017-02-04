@@ -27,23 +27,23 @@ public class StudyInfo extends FragmentActivity {
 
         //Based on the count, the specific tutorial gets loaded in the screen
         if (tutCount == 0) {
-            String heading = "1.0 - What is Coding?";
+            String heading = "1.0 - Printing in Python";
             textViewHeading.setText(heading);
             String tut_1_0 = "The easiest way to explain what coding is, is to say that coding is " +
-                    "typing in the code. \n\nCoding is like writing, but in a specific computer " +
-                    "language. It is like writing in foreign language." +
-                    "\n\nA programmer (or developer) is a person who writes a code." +
-                    " \n\nPrograms are lines of code that is understandable for computers";
+                    "typing in the code. \n\n Let us learn the print statement." +
+                    "\n\nTo print something type, print(\"Hello, Python!\"), then " +
+                    "the output would be: Hello, Python!";
             textViewStudy.setText(tut_1_0);
             tutCount = tutCount + 1;
             Log.d(TAG,"value: " + tutCount);
         }
         else if (tutCount == 1) {
-            String heading = "1.1 - Why programming?";
+            String heading = "1.1 - About Lists";
             textViewHeading.setText(heading);
             String tut_1_1 = "Technology is becoming incredibly important throughout the world. " +
                     "\n\nDemand is increasing on a daily basis for programmers to create that " +
-                    "technology. ";
+                    "technology. \n\n Creating a list is as simple as putting different" +
+                    " comma-separated values between square brackets. For example: list = [1, 2, 3, 4, 5 ]; ";
             textViewStudy.setText(tut_1_1);
             tutCount = tutCount + 1;
             Log.d(TAG,"value: " + tutCount);

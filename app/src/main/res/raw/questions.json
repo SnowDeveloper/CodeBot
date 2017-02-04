@@ -5,33 +5,33 @@
       "notes": "Bla-bla",
       "questions": [
         {
-          "question": "Question 1: What is the output of: print(\"Welcome :)\")?",
+          "question": "Question 1: What is the output of: print(\"Garage48\")?",
           "hint": "The result after execution",
-          "answer": "Welcome :)",
+          "answer": "Garage48",
           "options": [
-            "Welcome :)",
-            "Welcome",
+            "print('garage48')",
+            "Garage48",
             "Error"
           ]
         },
         {
-          "question": "Question 2: Fill in the blank: ____(\"Cody is fun!\")",
-          "hint": "Keyword for printing something",
-          "answer": "print",
+          "question": "Question 2: What should be instead of __: print(\"__\") : 'is'",
+          "hint": "The element that needs to be displayed",
+          "answer": "is",
           "options": [
-            "display",
-            "print",
-            "echo"
+            "is",
+            "None",
+            "Error"
           ]
         },
         {
-          "question": "Question 3: Do you want to learn programming?",
-          "hint": "You can lead a horse to water, but you can't make it drink",
-          "answer": "Sure!",
+          "question": "Question 3: What is the output of: print(\"fun! :)\")",
+          "hint": "The result after execution",
+          "answer": "fun! :)",
           "options": [
-            "Sure!",
-            "Maybe later",
-            "What is that?"
+            "fun!",
+            "Error",
+            "fun! :)"
           ]
         }
       ]
@@ -42,13 +42,23 @@
       "questions": [
         {
           "question": "What is the output of [1, 2, 3] + [4, 5, 6]?",
-          "hint": "Concatenation of two elements",
+          "hint": "Concatenation of two lists",
           "answer": "[1, 2, 3, 4, 5, 6]",
           "options": [
             "[1, 2, 3, 4, 5, 6]",
             " [1, 2, 3],[4, 5, 6]",
             "21"
             ]
+        },
+        {
+          "question": "What is the output of elem = ['a', 'b', 'c', 'd', 'e'] \n print(elem[10:])?",
+          "hint": "The result after execution",
+          "answer": "[]",
+          "options": [
+            "None",
+            "[]",
+            "Error"
+          ]
         }
       ]
     }

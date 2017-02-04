@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-        android:text="Hello From CodeBot!"
+        android:text="Let The Practise Begin!"
         android:textColor="#FFFFFF"
         android:textSize="26sp" />
 
@@ -29,25 +29,11 @@
         android:layout_below="@id/textView4"
         android:text="Go To Next Tutorial" />
 
-    <TextView
-        android:id="@+id/textViewPrac"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/nextTutBtn"
-        android:layout_alignBottom="@id/nextTutBtn"
-        android:layout_marginEnd="19dp"
-        android:layout_marginRight="19dp"
-        android:layout_toLeftOf="@id/nextTutBtn"
-        android:layout_toStartOf="@id/nextTutBtn"
-        android:text="Let The Practise Begin!"
-        android:textColor="#ffffff"
-        android:textSize="18sp" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/textViewPrac"
+        android:layout_below="@id/nextTutBtn"
         android:clipToPadding="false"
         android:divider="@null"
         android:paddingTop="8dp" />

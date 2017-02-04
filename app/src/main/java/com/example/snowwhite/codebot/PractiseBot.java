@@ -100,7 +100,15 @@ public class PractiseBot extends FragmentActivity {
         });
 
         loadQuestions();
-        onUserMessage("");
+        displayMessage("Hello from CodeBot!",false, ChatMessage.MessageType.NORMAL);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                onUserMessage("");
+            }
+        }, 600);
+
     }
 
     private void displayMessage(String message, boolean ownMessage, ChatMessage.MessageType type) {
@@ -230,9 +238,12 @@ public class PractiseBot extends FragmentActivity {
                 questionCounter++;
                 return question;
             } catch (IndexOutOfBoundsException e) {
-                topicCounter++;
-                questionCounter = 0;
-                return getPythonQuestion();
+                Question question = new Question();
+                question.answer = "";
+                question.hint = "";
+                question.question = "Congrats! \n You've finished the Practice. \n Please click on button -> " +
+                        "Go To Next Tutorial ";
+                return question;
             }
         } catch (IndexOutOfBoundsException e) {
             Log.e(TAG, "getPythonQuestion: no more questions left");
