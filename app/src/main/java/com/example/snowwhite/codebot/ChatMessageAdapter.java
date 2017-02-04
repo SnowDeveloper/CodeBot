@@ -2,6 +2,7 @@ package com.example.snowwhite.codebot;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import static com.example.snowwhite.codebot.MainActivity.TAG;
 
 public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.MessageHolder> {
     private static final int MY_MESSAGE = 0, OTHER_MESSAGE = 1;
@@ -56,14 +59,21 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
     @Override
     public void onBindViewHolder(final MessageHolder holder, int position) {
         ChatMessage chatMessage = mMessages.get(position);
+        if(chatMessage==null){
+            Log.e(TAG, "onBindViewHolder: chatMessage is null");
+            return;
+        }
         holder.ivImage.setVisibility(View.GONE);
         holder.tvMessage.setVisibility(View.GONE);
+        if (holder.options != null)
+            holder.options.setVisibility(View.GONE);
+
         if (chatMessage.isImage()) {
             holder.ivImage.setVisibility(View.VISIBLE);
             holder.tvMessage.setVisibility(View.GONE);
 
             holder.ivImage.setImageResource(R.drawable.code_bot);
-        } else if (chatMessage.isMultipleChoice()) {
+        } else if (chatMessage.isMultipleChoice() && chatMessage.getOptions() != null) {
             holder.options.removeAllViews();
             for (String option : chatMessage.getOptions()) {
                 LayoutInflater inflater = LayoutInflater.from(mContext);
@@ -74,9 +84,13 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
                     @Override
                     public void onClick(View view) {
                         ((PractiseBot) mContext).onItemClicked(view, holder.options);
+                        holder.options.removeAllViews();
+                        holder.options.setVisibility(View.GONE);
                     }
                 });
+                holder.options.setVisibility(View.VISIBLE);
                 holder.options.addView(button);
+                chatMessage.setOptions(null);
             }
             if (!chatMessage.getContent().isEmpty()) {
                 holder.tvMessage.setVisibility(View.VISIBLE);

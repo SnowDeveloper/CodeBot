@@ -227,7 +227,7 @@ public class PractiseBot extends FragmentActivity {
     public void onItemClicked(View view, LinearLayout options) {
         Log.d(TAG, String.format("onItemClicked: %s", ((Button) (view)).getText()));
         sendMessage(((Button) view).getText().toString());
-        options.removeAllViews();
+//        options.removeAllViews();
     }
 
     private void loadQuestions() {
