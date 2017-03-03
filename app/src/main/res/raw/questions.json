@@ -1,62 +1,62 @@
 {
   "python": [
     {
-      "topic": "Printing",
+      "topic": "What is the Output?",
       "notes": "Bla-bla",
       "questions": [
         {
-          "question": "Question 1: What is the output of: print(\"Garage48\")?",
+          "question": "Question 1: print(\"Hello, my name is Cody\")?",
           "hint": "The result after execution",
-          "answer": "Garage48",
+          "answer": "Hello, my name is Cody",
           "options": [
-            "print('garage48')",
-            "Garage48",
-            "Error"
+            "my name is Cody",
+            "print(\"Hello, my name is Cody\")",
+            "Hello, my name is Cody"
           ]
         },
         {
-          "question": "Question 2: What should be instead of __: print(\"__\") : 'is'",
-          "hint": "The element that needs to be displayed",
-          "answer": "is",
+          "question": "Question 2: a=2 \nif a==2:\nprint(\"Hi\")",
+          "hint": "What would it print?",
+          "answer": "Hi",
           "options": [
-            "is",
-            "None",
-            "Error"
+            "a=2",
+            "print(\"Hi\")",
+            "Hi"
           ]
         },
         {
-          "question": "Question 3: What is the output of: print(\"fun! :)\")",
+          "question": "Question 3: a=3\nif a==2:\n print(\"Hello\")\nelse:\n print(\"Goodbye\")",
           "hint": "The result after execution",
-          "answer": "fun! :)",
+          "answer": "Goodbye",
           "options": [
-            "fun!",
-            "Error",
-            "fun! :)"
+            "Goodbye",
+            "Hello",
+            "a=3"
           ]
         }
       ]
     },
     {
-      "topic": "Objects",
+      "topic": "Quiz",
       "notes": "Another bla",
       "questions": [
         {
-          "question": "What is the output of [1, 2, 3] + [4, 5, 6]?",
-          "hint": "Concatenation of two lists",
-          "answer": "[1, 2, 3, 4, 5, 6]",
+          "question": "_____(\"Hello world!\")",
+          "hint": "Fill in the blank",
+          "answer": "print",
           "options": [
-            "[1, 2, 3, 4, 5, 6]",
-            " [1, 2, 3],[4, 5, 6]",
-            "21"
+            "print",
+            "Error",
+            "echo"
             ]
         },
         {
-          "question": "What is the output of elem = ['a', 'b', 'c', 'd', 'e'] \n print(elem[10:])?",
-          "hint": "The result after execution",
-          "answer": "[]",
+          "question": "print(_Hello world!_)",
+          "hint": "Fill in the blank",
+          "answer": "Quotes(\",\")",
           "options": [
             "None",
-            "[]",
+            "Quotes(\",\")",
             "Error"
           ]
         }
